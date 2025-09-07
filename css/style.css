@@ -1,0 +1,327 @@
+/* =====================
+   BLOOMISTRY STYLE.CSS
+   ===================== */
+
+/* 🎨 Palet warna pastel */
+:root {
+  --blue: #d1e9f6;
+  --yellow: #f6eacb;
+  --peach: #f1d3ce;
+  --pink: #eecad5;
+  --dark: #333;
+  --white: #fff;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--blue);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* =====================
+   HEADER & NAVBAR
+   ===================== */
+.site-header {
+  background: var(--peach);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-bottom: 4px solid var(--pink);
+}
+
+.site-header h1 {
+  font-size: 2.2rem;
+  color: var(--dark);
+}
+
+.slogan {
+  font-style: italic;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.main-nav {
+  margin-top: 0.5rem;
+}
+
+.main-nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--pink);
+}
+
+/* =====================
+   CONTAINER & GRID
+   ===================== */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Produk tampil sebagai card */
+.product-item {
+  background: var(--white);
+  border: 2px solid var(--yellow);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.product-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.7rem;
+}
+
+.product-item h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+/* Harga produk */
+.product-item .price {
+  font-weight: bold;
+  color: var(--pink);
+  margin: 0.4rem 0;
+}
+
+/* =====================
+   BUTTONS
+   ===================== */
+.buy-btn,
+.detail-btn {
+  display: inline-block;
+  margin: 0.3rem 0.3rem 0 0.3rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--pink);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buy-btn:hover,
+.detail-btn:hover {
+  background: var(--peach);
+  transform: translateY(-2px);
+}
+
+/* =====================
+   PRODUCT DETAIL
+   ===================== */
+.product-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.product-detail img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.detail-info {
+  flex: 1;
+}
+
+.detail-info h2 {
+  margin-bottom: 0.5rem;
+}
+
+.detail-info .price {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+/* =====================
+   CONTACT FORM
+   ===================== */
+.contact-form {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid var(--yellow);
+  max-width: 600px;
+  margin: auto;
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid var(--peach);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.send-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--pink);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.send-btn:hover {
+  background: var(--peach);
+}
+
+/* =====================
+   CART (thumbnail kecil)
+   ===================== */
+.cart-wrapper {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+#cart-items {
+  background: var(--white);
+  border: 2px solid var(--yellow);
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--peach);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex: 0 0 64px;
+  display: block;
+}
+
+.cart-item h4 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+.cart-item p {
+  margin: 0;
+  font-weight: 700;
+  color: var(--pink);
+}
+
+.remove-btn {
+  margin-left: auto;
+  padding: 6px 10px;
+  background: crimson;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.remove-btn:hover {
+  background: darkred;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0 0;
+}
+
+#cart-total {
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.checkout-btn,
+#checkout-btn {
+  padding: 10px 16px;
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.checkout-btn:hover,
+#checkout-btn:hover {
+  background: var(--peach);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+.site-footer {
+  background: var(--peach);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  border-top: 4px solid var(--pink);
+}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 768px) {
+  .product-detail {
+    flex-direction: column;
+    align-items: center;
+  }
+}
