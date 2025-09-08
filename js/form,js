@@ -1,25 +1,11 @@
-// Validasi form kontak
+// js/form.js
+
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
+  const form = document.querySelector(".contact-form");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if (!name || !email || !message) {
-      alert("Semua field harus diisi!");
-      return;
-    }
-
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      alert("Format email tidak valid!");
-      return;
-    }
-
-    alert("Pesan berhasil dikirim! Terima kasih sudah menghubungi kami.");
+    alert("Terima kasih! Pesan Anda sudah terkirim.");
     form.reset();
   });
 });

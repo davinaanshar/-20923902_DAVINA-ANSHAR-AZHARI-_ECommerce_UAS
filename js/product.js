@@ -1,26 +1,24 @@
-// Simpan ke localStorage saat tombol "Beli Sekarang" diklik
+// js/product.js
+
 document.addEventListener("DOMContentLoaded", () => {
-  const buyBtn = document.querySelector(".buy-btn");
-  if (buyBtn) {
-    buyBtn.addEventListener("click", () => {
-      const productName = document.querySelector(".detail-info h2").textContent;
-      const productPrice = document.querySelector(".price").textContent;
-      const productImg = document.querySelector("main img").src;
+  const buttons = document.querySelectorAll(".buy-btn");
 
-      // Ambil keranjang dari localStorage
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const product = {
+        name: button.dataset.name,
+        price: parseInt(button.dataset.price),
+        image: button.dataset.image,
+      };
+
+      // Ambil keranjang lama
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(product);
 
-      // Tambah produk baru
-      cart.push({
-        name: productName,
-        price: productPrice,
-        img: productImg,
-      });
-
-      // Simpan kembali ke localStorage
+      // Simpan lagi ke localStorage
       localStorage.setItem("cart", JSON.stringify(cart));
 
-      alert(`${productName} berhasil ditambahkan ke keranjang!`);
+      alert(`${product.name} berhasil ditambahkan ke keranjang!`);
     });
-  }
+  });
 });

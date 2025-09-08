@@ -1,99 +1,92 @@
-/* =====================
-   BLOOMISTRY STYLE.CSS
-   ===================== */
-
-/* 🎨 Palet warna pastel */
-:root {
-  --blue: #d1e9f6;
-  --yellow: #f6eacb;
-  --peach: #f1d3ce;
-  --pink: #eecad5;
-  --dark: #333;
-  --white: #fff;
-}
-
-/* Reset */
+/* ===== Global Style ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--blue);
-  color: var(--dark);
+  background-color: #f6eacb; /* warna pastel lembut */
+  color: #333;
   line-height: 1.6;
 }
 
-/* =====================
-   HEADER & NAVBAR
-   ===================== */
+/* ===== Header ===== */
 .site-header {
-  background: var(--peach);
+  background-color: #d1e9f6;
   text-align: center;
-  padding: 1.5rem 1rem;
-  border-bottom: 4px solid var(--pink);
+  padding: 20px;
+  border-bottom: 4px solid #eecad5;
 }
 
 .site-header h1 {
-  font-size: 2.2rem;
-  color: var(--dark);
+  color: #e67a92;
+  font-size: 2rem;
 }
 
-.slogan {
+.site-header .slogan {
   font-style: italic;
-  color: var(--dark);
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #555;
 }
 
-.main-nav {
-  margin-top: 0.5rem;
+nav {
+  margin-top: 10px;
 }
 
-.main-nav a {
-  margin: 0 1rem;
+nav a {
+  margin: 0 12px;
   text-decoration: none;
-  color: var(--dark);
   font-weight: bold;
+  color: #444;
   transition: color 0.3s ease;
 }
 
-.main-nav a:hover,
-.main-nav a.active {
-  color: var(--pink);
+nav a:hover,
+nav a.active {
+  color: #e67a92;
 }
 
-/* =====================
-   CONTAINER & GRID
-   ===================== */
+/* ===== Container ===== */
 .container {
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: 30px auto;
+  padding: 20px;
 }
 
+/* ===== Tentang Kami ===== */
+.about {
+  background: #f1d3ce;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.about h2 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+/* ===== Produk di Beranda ===== */
 .product-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  gap: 25px;
 }
 
-/* Produk tampil sebagai card */
 .product-item {
-  background: var(--white);
-  border: 2px solid var(--yellow);
-  border-radius: 12px;
-  padding: 1rem;
   text-align: center;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .product-item img {
@@ -101,227 +94,164 @@ body {
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 0.7rem;
 }
 
 .product-item h3 {
-  margin: 0.5rem 0;
+  margin-top: 12px;
   font-size: 1.1rem;
-  color: var(--dark);
+  color: #333;
 }
 
-/* Harga produk */
 .product-item .price {
+  color: #d9534f;
   font-weight: bold;
-  color: var(--pink);
-  margin: 0.4rem 0;
+  margin: 8px 0;
 }
 
-/* =====================
-   BUTTONS
-   ===================== */
-.buy-btn,
-.detail-btn {
+.product-item a,
+.product-item button {
   display: inline-block;
-  margin: 0.3rem 0.3rem 0 0.3rem;
-  padding: 0.6rem 1.2rem;
-  background: var(--pink);
-  color: var(--white);
-  border: none;
+  padding: 8px 14px;
+  margin-top: 10px;
   border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.95rem;
+  border: none;
+  background-color: #eecad5;
+  color: white;
   font-weight: bold;
+  text-decoration: none;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
 }
 
-.buy-btn:hover,
-.detail-btn:hover {
-  background: var(--peach);
-  transform: translateY(-2px);
+.product-item a:hover,
+.product-item button:hover {
+  background-color: #f1d3ce;
 }
 
-/* =====================
-   PRODUCT DETAIL
-   ===================== */
-.product-detail {
+/* ===== Detail Produk ===== */
+.detail-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
 }
 
-.product-detail img {
-  max-width: 400px;
-  width: 100%;
-  border-radius: 10px;
+.detail-container img {
+  width: 350px;
+  border-radius: 12px;
 }
 
-.detail-info {
-  flex: 1;
+.detail-container h2 {
+  font-size: 1.5rem;
 }
 
-.detail-info h2 {
-  margin-bottom: 0.5rem;
-}
-
-.detail-info .price {
+.detail-container .price {
+  color: #d9534f;
   font-size: 1.2rem;
-  margin: 0.5rem 0;
+  font-weight: bold;
 }
 
-/* =====================
-   CONTACT FORM
-   ===================== */
-.contact-form {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 10px;
-  border: 2px solid var(--yellow);
+.detail-container p {
   max-width: 600px;
   margin: auto;
 }
 
+/* ===== Form Kontak ===== */
+.contact-form {
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .contact-form label {
-  display: block;
-  margin-top: 1rem;
   font-weight: bold;
+  margin-bottom: 4px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 0.3rem;
-  border: 1px solid var(--peach);
-  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 1rem;
 }
 
-.send-btn {
-  margin-top: 1rem;
-  padding: 0.7rem 1.2rem;
-  background: var(--pink);
-  color: var(--white);
+.contact-form button {
+  padding: 12px;
+  background-color: #eecad5;
+  color: white;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 8px;
   font-size: 1rem;
+  cursor: pointer;
 }
 
-.send-btn:hover {
-  background: var(--peach);
+.contact-form button:hover {
+  background-color: #f1d3ce;
 }
 
-/* =====================
-   CART (thumbnail kecil)
-   ===================== */
-.cart-wrapper {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-#cart-items {
-  background: var(--white);
-  border: 2px solid var(--yellow);
-  border-radius: 12px;
-  padding: 0.5rem 1rem;
+/* ===== Keranjang ===== */
+.cart-container {
+  max-width: 800px;
+  margin: auto;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--peach);
-}
-
-.cart-item:last-child {
-  border-bottom: none;
-}
-
-.cart-img {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 8px;
-  flex: 0 0 64px;
-  display: block;
-}
-
-.cart-item h4 {
-  margin: 0 0 4px;
-  font-size: 0.95rem;
-  color: var(--dark);
-}
-
-.cart-item p {
-  margin: 0;
-  font-weight: 700;
-  color: var(--pink);
-}
-
-.remove-btn {
-  margin-left: auto;
-  padding: 6px 10px;
-  background: crimson;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-.remove-btn:hover {
-  background: darkred;
-}
-
-.cart-summary {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 16px 0 0;
+  background: #fff;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-#cart-total {
-  font-weight: 800;
-  font-size: 1.05rem;
+.cart-item img {
+  width: 60px; /* kecil biar rapi */
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-.checkout-btn,
-#checkout-btn {
-  padding: 10px 16px;
-  background: var(--pink);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+.cart-item h3 {
+  flex: 1;
+  margin-left: 15px;
   font-size: 1rem;
 }
-.checkout-btn:hover,
-#checkout-btn:hover {
-  background: var(--peach);
+
+.cart-item .price {
+  font-weight: bold;
+  color: #d9534f;
 }
 
-/* =====================
-   FOOTER
-   ===================== */
+.cart-item button {
+  padding: 6px 10px;
+  background: #e67a92;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cart-item button:hover {
+  background: #f1d3ce;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* ===== Footer ===== */
 .site-footer {
-  background: var(--peach);
   text-align: center;
-  padding: 1rem;
-  margin-top: 3rem;
-  border-top: 4px solid var(--pink);
-}
-
-/* =====================
-   RESPONSIVE
-   ===================== */
-@media (max-width: 768px) {
-  .product-detail {
-    flex-direction: column;
-    align-items: center;
-  }
+  padding: 15px;
+  background: #d1e9f6;
+  margin-top: 40px;
+  border-top: 4px solid #eecad5;
 }
