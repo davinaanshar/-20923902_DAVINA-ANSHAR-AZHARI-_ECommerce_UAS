@@ -1,24 +1,46 @@
 // js/product.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".buy-btn");
-
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      const product = {
-        name: button.dataset.name,
-        price: parseInt(button.dataset.price),
-        image: button.dataset.image,
-      };
+      // Prefer dataset (we added it), fallback ke DOM if missing
+      let name =
+        button.dataset.name ||
+        button.closest(".detail-info")?.querySelector("h2")?.textContent ||
+        "";
+      let price = button.dataset.price
+        ? parseInt(button.dataset.price)
+        : (() => {
+            const p =
+              button.closest(".detail-info")?.querySelector(".price")
+                ?.textContent || "";
+            return parseInt(p.replace(/[^\d]/g, "")) || 0;
+          })();
+      let image =
+        button.dataset.image ||
+        button
+          .closest(".product-detail")
+          ?.querySelector("img")
+          ?.getAttribute("src") ||
+        "";
 
-      // Ambil keranjang lama
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(product);
+      if (!name || !price || !image) {
+        alert("Produk gagal ditambahkan. Data tidak lengkap.");
+        return;
+      }
 
-      // Simpan lagi ke localStorage
-      localStorage.setItem("cart", JSON.stringify(cart));
+      const product = { name, price, image };
 
-      alert(`${product.name} berhasil ditambahkan ke keranjang!`);
+      try {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        console.log("cart updated:", cart);
+        alert(`${product.name} berhasil ditambahkan ke keranjang!`);
+      } catch (e) {
+        console.error("Gagal menyimpan ke localStorage:", e);
+        alert("Terjadi kesalahan saat menambahkan ke keranjang.");
+      }
     });
   });
 });

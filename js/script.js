@@ -1,4 +1,4 @@
-// Bisa dipakai untuk fitur umum (misal navbar toggle di HP)
+// js/script.js
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Website Bloomistry siap digunakan!");
+  console.log("Bloomistry ready");
 });

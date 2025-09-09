@@ -1,39 +1,57 @@
 // js/cart.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const cartItemsContainer = document.getElementById("cart-items");
-  const totalPriceElement = document.getElementById("total-price");
+  const totalElement = document.getElementById("cart-total");
+  const clearBtn = document.getElementById("clear-cart");
 
-  // Ambil data keranjang dari localStorage
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  console.log("cart loaded:", cart);
 
-  function renderCart() {
+  function render() {
     cartItemsContainer.innerHTML = "";
     let total = 0;
+    if (!cart.length) {
+      cartItemsContainer.innerHTML = "<p>Keranjang masih kosong.</p>";
+      totalElement.textContent = "Total: Rp 0";
+      return;
+    }
 
-    cart.forEach((item, index) => {
-      total += item.price;
-
+    cart.forEach((it, idx) => {
+      total += it.price;
       const div = document.createElement("div");
-      div.classList.add("cart-item");
+      div.className = "cart-item";
       div.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
-        <h3>${item.name}</h3>
-        <p class="price">Rp ${item.price.toLocaleString()}</p>
-        <button onclick="removeItem(${index})">Hapus</button>
+        <img src="${it.image}" alt="${it.name}">
+        <div style="flex:1">
+          <h3>${it.name}</h3>
+          <p class="price">Rp ${it.price.toLocaleString()}</p>
+        </div>
+        <button data-index="${idx}" class="remove-btn">Hapus</button>
       `;
       cartItemsContainer.appendChild(div);
     });
 
-    totalPriceElement.textContent = "Rp " + total.toLocaleString();
+    totalElement.textContent = "Total: Rp " + total.toLocaleString();
+
+    // attach remove handlers
+    document.querySelectorAll(".remove-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const i = parseInt(btn.dataset.index);
+        cart.splice(i, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        render();
+      });
+    });
   }
 
-  // Buat fungsi remove global
-  window.removeItem = function (index) {
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
-  };
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      if (!confirm("Kosongkan keranjang?")) return;
+      cart = [];
+      localStorage.removeItem("cart");
+      render();
+    });
+  }
 
-  renderCart();
+  render();
 });
